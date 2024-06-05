@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
   const token = jwt.sign(
     { email: admin.email },
     process.env.NEXT_PUBLIC_JWT_SECRET as string,
-    { expiresIn: "1h" }
+    { expiresIn: "24h" }
   );
 
   const response = NextResponse.json({ message: "Login successful" });

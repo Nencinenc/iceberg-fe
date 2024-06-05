@@ -1,12 +1,12 @@
 import React from "react";
 import ProductCard from "../cards/ProductCard";
-import Emerald from "@/assets/products/emerald/emerald.png";
 import Product, { IProduct } from "@/models/Product";
 import connectToDatabase from "@/lib/mongoDb";
 
 const getProducts = async (): Promise<IProduct[]> => {
   await connectToDatabase();
   const products = await Product.find().lean();
+  console.log(products);
   return products;
 };
 
@@ -25,6 +25,7 @@ const AllProducts: React.FC = async () => {
       <div className="flex flex-row gap-10 justify-center">
         {products.map((product) => (
           <ProductCard
+            key={product.slug}
             title={product.title}
             slug={product.slug}
             mainImage={product.imageUrl}

@@ -7,7 +7,11 @@ const Footer: React.FC = () => {
   return (
     <footer className="relative mt-20 bg-black border-t border-sky-500 px-4 pt-20">
       <div className="absolute -top-10 left-1/2 w-20 h-20 -translate-x-1/2 rounded-xl border-2 border-sky-500 bg-white p-2">
-        <Image className="h-full object-cover mt-2" src={Logo} alt="Iceberg" />
+        <Image
+          className="h-full w-full object-cover mt-2"
+          src={Logo}
+          alt="Iceberg"
+        />
       </div>
       <nav
         aria-label="Footer Navigation"

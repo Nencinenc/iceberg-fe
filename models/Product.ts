@@ -1,5 +1,15 @@
 import mongoose, { Schema, Document, Model } from "mongoose";
 
+export interface ICreateProduct {
+  title: string;
+  description: string;
+  imageUrl: string;
+  weight: number;
+  flavor: string;
+  strength: string;
+  unitsInPackage: number;
+}
+
 export interface IProduct extends Document {
   title: string;
   slug: string;
@@ -9,7 +19,6 @@ export interface IProduct extends Document {
   flavor: string;
   strength: string;
   unitsInPackage: number;
-  burningSensation: string;
 }
 
 const productSchema: Schema = new Schema({
@@ -21,7 +30,6 @@ const productSchema: Schema = new Schema({
   flavor: { type: String, required: true },
   strength: { type: String, required: true },
   unitsInPackage: { type: Number, required: true },
-  burningSensation: { type: String, required: true },
 });
 
 const Product: Model<IProduct> =

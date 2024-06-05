@@ -1,3 +1,4 @@
+import Image from "next/image";
 import connectToDatabase from "@/lib/mongoDb";
 import Product, { IProduct } from "@/models/Product";
 
@@ -69,8 +70,8 @@ const ProductPage = async ({ params }: { params: any }) => {
               <div className="lg:flex lg:items-start">
                 <div className="lg:order-2 lg:ml-5">
                   <div className="max-w-xl overflow-hidden rounded-lg">
-                    <img
-                      className="h-full w-full max-w-full object-cover"
+                    <Image
+                      className=" max-w-full object-cover"
                       src={product.imageUrl}
                       alt={product.title}
                     />
@@ -83,7 +84,7 @@ const ProductPage = async ({ params }: { params: any }) => {
                       type="button"
                       className="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-sky-500 text-center"
                     >
-                      <img
+                      <Image
                         className="h-full w-full object-cover"
                         src={product.imageUrl}
                         alt=""
@@ -183,14 +184,7 @@ const ProductPage = async ({ params }: { params: any }) => {
                     </div>
                   </div>
                 </div>
-                <div className="flex items-end">
-                  <div className="text-center">
-                    <div className="text-lg pb-2">Изгарящо усещане</div>
-                    <div className="bg-blue-500 flex flex-col p-2 rounded-full text-white">
-                      <div className="text-lg">{product.burningSensation}</div>
-                    </div>
-                  </div>
-                </div>
+
                 <div className="flex items-end">
                   <div className="text-center">
                     <div className="text-lg pb-2">Тегло</div>

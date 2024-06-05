@@ -24,6 +24,7 @@ const LatestProducts: React.FC = async () => {
       <div className="flex flex-row gap-10 justify-center">
         {products.map((product) => (
           <ProductCard
+            key={product.slug}
             title={product.title}
             slug={product.slug}
             mainImage={product.imageUrl}

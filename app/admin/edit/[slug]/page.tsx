@@ -5,12 +5,11 @@ import { useRouter, useParams } from "next/navigation";
 import { IProduct } from "@/models/Product";
 
 const fetchProduct = async (slug: string): Promise<IProduct | null> => {
-  const response = await fetch("/api/admin/product/getBySlug", {
-    method: "POST",
+  const response = await fetch(`/api/product/${slug}`, {
+    method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ slug }),
   });
 
   if (response.ok) {
@@ -56,7 +55,7 @@ const EditProductPage = () => {
     });
 
     if (response.ok) {
-      router.push("/admin/products");
+      router.push("/products");
     } else {
       console.error("Failed to update product");
     }

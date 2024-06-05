@@ -27,7 +27,7 @@ const AllProducts: React.FC = async () => {
         </thead>
         <tbody>
           {products.map((product) => (
-            <tr>
+            <tr key={product.slug}>
               <td className="py-2 px-4 border-b">{product.title}</td>
               <td className="py-2 px-4 border-b">{product.description}</td>
               <td className="py-2 px-4 border-b">{product.flavor}</td>

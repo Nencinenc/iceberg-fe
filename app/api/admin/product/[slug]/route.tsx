@@ -15,16 +15,16 @@ export async function POST(req: NextRequest) {
   await connectToDatabase();
 
   try {
-    const productByslug = await Product.findOne({ slug });
+    const productBySlug = await Product.findOne({ slug });
 
-    if (!productByslug) {
+    if (!productBySlug) {
       return NextResponse.json(
         { message: "Product not found" },
         { status: 404 }
       );
     }
 
-    return NextResponse.json(productByslug, { status: 200 });
+    return NextResponse.json(productBySlug, { status: 200 });
   } catch (error) {
     console.error("Error fetching product:", error);
     return NextResponse.json(
