@@ -65,8 +65,8 @@ const AddressSearch: React.FC = () => {
     <>
       <Map
         style={{ width: "100%", height: "480px", marginBottom: "12px" }}
-        defaultZoom={3}
-        defaultCenter={{ lat: 22.54992, lng: 0 }}
+        defaultZoom={7}
+        defaultCenter={{ lat: 42.43, lng: 25.28 }}
         gestureHandling={"greedy"}
         disableDefaultUI={true}
         mapId={"bf51a910020fa25a"}

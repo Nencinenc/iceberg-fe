@@ -1,7 +1,13 @@
 import React from "react";
+import МаpView from "@/components/locations/MapView";
 
-const Locations: React.FC = (props) => {
-  return <div>Locations</div>;
+const Locations = () => {
+  return (
+    <div className="py-24 px-16 md:px-32">
+      <h1 className="text-3xl font-bold">Локации с магазини</h1>
+      <МаpView />
+    </div>
+  );
 };
 
 export default Locations;
