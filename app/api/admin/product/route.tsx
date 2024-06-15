@@ -31,9 +31,9 @@ export async function POST(req: Request) {
     }
 
     const slug = slugify(title, {
-      lower: true, // Convert slug to lowercase
-      strict: true, // Strip special characters except replacement
-      remove: /[*+~.()'"!:@]/g, // Regex to remove certain replaceable characters
+      lower: true,
+      strict: true,
+      remove: /[*+~.()'"!:@]/g,
     });
 
     const productData = {

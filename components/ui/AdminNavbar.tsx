@@ -43,13 +43,13 @@ const Navbar: React.FC = () => {
             </Link>
           </li>
           <li>
-            <Link href="/admin/add-product" className="hover:text-gray-400">
-              Добави продукти
+            <Link href="/admin/products" className="hover:text-gray-400">
+              Продукти
             </Link>
           </li>
           <li>
-            <Link href="/admin/add-location" className="hover:text-gray-400">
-              Добави локации
+            <Link href="/admin/locations" className="hover:text-gray-400">
+              Локации
             </Link>
           </li>
         </ul>

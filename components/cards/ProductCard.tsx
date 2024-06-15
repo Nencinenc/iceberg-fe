@@ -19,10 +19,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
         className="relative mx-3 mt-3 flex w-full h-[400px] overflow-hidden rounded-xl"
         href={`/products/${slug}`}
       >
-        <img
+        <Image
           className="peer absolute top-10 right-0 h-80 mx-auto w-full object-cover"
           src={typeof mainImage === "string" ? mainImage : mainImage.src}
           alt={title}
+          width={300}
+          height={300}
         />
       </a>
       <div className="mt-4 px-5 pb-5 text-center">

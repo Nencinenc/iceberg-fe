@@ -1,43 +1,57 @@
-import { NextRequest, NextResponse } from "next/server";
 import connectToDatabase from "@/lib/mongoDb";
 import Product from "@/models/Product";
+import { NextResponse } from "next/server";
+import slugify from "slugify";
 
-export async function PUT(
-  req: NextRequest,
-  { params }: { params: { slug: string } }
-) {
-  const slug = params.slug;
-  const { title, description, flavor } = await req.json();
-
-  if (!title || !description || !flavor) {
-    return NextResponse.json(
-      { message: "Missing required fields" },
-      { status: 400 }
-    );
-  }
-
-  await connectToDatabase();
-
+export async function POST(req: Request) {
   try {
-    const updatedProduct = await Product.findOneAndUpdate(
-      { slug },
-      { title, description, flavor },
-      { new: true }
-    );
+    await connectToDatabase();
+    const body = await req.json();
 
-    if (!updatedProduct) {
-      return NextResponse.json(
-        { message: "Product not found" },
-        { status: 404 }
-      );
+    const {
+      title,
+      description,
+      imageUrl,
+      weight,
+      flavor,
+      strength,
+      unitsInPackage,
+    } = body;
+
+    if (
+      !title ||
+      !description ||
+      !imageUrl ||
+      !weight ||
+      !flavor ||
+      !strength ||
+      !unitsInPackage
+    ) {
+      return new NextResponse("Missing data", { status: 400 });
     }
 
-    return NextResponse.json(updatedProduct, { status: 200 });
+    const slug = slugify(title, {
+      lower: true,
+      strict: true,
+      remove: /[*+~.()'"!:@]/g,
+    });
+
+    const productData = {
+      title,
+      slug,
+      description,
+      imageUrl,
+      weight,
+      flavor,
+      strength,
+      unitsInPackage,
+    };
+
+    const product = await Product.updateOne(productData);
+
+    return NextResponse.json(product, { status: 201 });
   } catch (error) {
-    console.error("Error updating product:", error);
-    return NextResponse.json(
-      { message: "Internal Server Error" },
-      { status: 500 }
-    );
+    console.log("[PRPODUCT_UPDATE]", error);
+    return new NextResponse("Internal error", { status: 500 });
   }
 }

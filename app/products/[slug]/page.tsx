@@ -71,9 +71,11 @@ const ProductPage = async ({ params }: { params: any }) => {
                 <div className="lg:order-2 lg:ml-5">
                   <div className="max-w-xl overflow-hidden rounded-lg">
                     <Image
-                      className=" max-w-full object-cover"
+                      className="max-w-full object-cover"
                       src={product.imageUrl}
                       alt={product.title}
+                      width={400}
+                      height={100}
                     />
                   </div>
                 </div>
@@ -87,6 +89,8 @@ const ProductPage = async ({ params }: { params: any }) => {
                       <Image
                         className="h-full w-full object-cover"
                         src={product.imageUrl}
+                        width={100}
+                        height={100}
                         alt=""
                       />
                     </button>

@@ -1,37 +1,41 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
-  ControlPosition,
-  MapControl,
-  AdvancedMarker,
   Map,
-  useMap,
-  useMapsLibrary,
-  useAdvancedMarkerRef,
+  AdvancedMarker,
+  InfoWindow,
 } from "@vis.gl/react-google-maps";
 import { ILocation } from "@/models/Location";
 
-const getLocations = async (): Promise<ILocation[] | null> => {
-  // To edit
-  const response = await fetch(`http://localhost:3000/api/admin/location`, {
+const getLocations = (): Promise<ILocation[] | null> => {
+  return fetch(`http://localhost:3000/api/admin/location`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
-  });
-
-  if (response.ok) {
-    const locations = await response.json();
-    return locations;
-  } else {
-    console.error("Failed to get locations");
-    return null;
-  }
+  })
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        console.error("Failed to get locations");
+        return null;
+      }
+    });
 };
 
-const MapView = async () => {
-  const locations = await getLocations();
+const MapView = () => {
+  const [locations, setLocations] = useState<ILocation[] | null>(null);
+  const [selectedLocation, setSelectedLocation] = useState<ILocation | null>(
+    null
+  );
+
+  useEffect(() => {
+    getLocations().then(locations => {
+      setLocations(locations);
+    });
+  }, []);
 
   return (
     <Map
@@ -47,8 +51,25 @@ const MapView = async () => {
           key={idx}
           position={{ lat: loc.latitude, lng: loc.longitude }}
           title={loc.name}
+          onClick={() => setSelectedLocation(loc)}
         />
       ))}
+
+      {selectedLocation && (
+        <InfoWindow
+          position={{
+            lat: selectedLocation.latitude,
+            lng: selectedLocation.longitude,
+          }}
+          onCloseClick={() => setSelectedLocation(null)}
+        >
+          <div className="text-black">
+            <h2>{selectedLocation.name}</h2>
+            <p>{`Lat: ${selectedLocation.latitude}, Lng: ${selectedLocation.longitude}`}</p>
+            <p>Description: asd</p>
+          </div>
+        </InfoWindow>
+      )}
     </Map>
   );
 };
