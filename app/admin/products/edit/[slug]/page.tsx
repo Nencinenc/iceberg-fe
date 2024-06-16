@@ -65,10 +65,10 @@ const FORM_DATA: {
 ];
 
 const editProduct = async (
-  id: string,
+  slug: string,
   productToCreate: ICreateProduct,
 ): Promise<IProduct | null> => {
-  const response = await fetch(`/api/admin/product/${id}`, {
+  const response = await fetch(`/api/admin/product/${slug}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -102,11 +102,10 @@ const fetchProduct = async (slug: string): Promise<IProduct | null> => {
   }
 };
 
-const EditProductPage = () => {
-  const { slug } = useParams();
+const EditProductPage = ({ params }: { params: any }) => {
+  const { slug } = params;
 
   const [image, setImage] = useState<string | null>(null);
-  const [productId, setProductId] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
   const { register, handleSubmit, setValue } = useForm<AddProductFormValues>({
@@ -123,10 +122,9 @@ const EditProductPage = () => {
   });
 
   const onSubmit = async (data: AddProductFormValues) => {
-    if(productId) {
       try {
         setLoading(true);
-        const product = await editProduct(productId,data);
+        const product = await editProduct(slug,data);
         if (!product) {
           throw new Error("Failed to edit product");
         }
@@ -138,7 +136,6 @@ const EditProductPage = () => {
       } finally {
         setLoading(false);
       }
-    }
   };
 
   useEffect(() => {
@@ -153,7 +150,6 @@ const EditProductPage = () => {
         setValue("imageUrl", fetchedProduct.imageUrl);
         setValue("unitsInPackage", fetchedProduct.unitsInPackage);
 
-        setProductId(fetchedProduct._id);
         setImage(fetchedProduct.imageUrl);
       }
     };

@@ -58,9 +58,7 @@ export async function GET(req: Request,  { params }: { params: { slug: string } 
         strength,
         unitsInPackage,
       };
-  
-      console.log("product data", productData);
-  
+      
       const product = await Product.findOneAndUpdate(
         { slug: params.slug },
         productData,
@@ -70,8 +68,6 @@ export async function GET(req: Request,  { params }: { params: { slug: string } 
       if (!product) {
         return new NextResponse("Product not found", { status: 404 });
       }
-  
-      console.log(product);
       
       return NextResponse.json(product, { status: 200 });
     } catch (error) {
