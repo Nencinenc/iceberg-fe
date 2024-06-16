@@ -9,7 +9,7 @@ import {
 import { ILocation } from "@/models/Location";
 
 const getLocations = (): Promise<ILocation[] | null> => {
-  return fetch(`http://localhost:3000/api/admin/location`, {
+  return fetch(`/api/admin/location`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

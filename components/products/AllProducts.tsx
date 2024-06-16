@@ -6,7 +6,6 @@ import connectToDatabase from "@/lib/mongoDb";
 const getProducts = async (): Promise<IProduct[]> => {
   await connectToDatabase();
   const products = await Product.find().lean();
-  console.log(products);
   return products;
 };
 

@@ -5,7 +5,6 @@ import Product, { IProduct } from "@/models/Product";
 const getProductBySlug = async (slug: string): Promise<IProduct | null> => {
   await connectToDatabase();
   const product = await Product.findOne({ slug }).lean();
-  console.log(product);
   return product;
 };
 

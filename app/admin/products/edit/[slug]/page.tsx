@@ -65,11 +65,11 @@ const FORM_DATA: {
 ];
 
 const editProduct = async (
+  id: string,
   productToCreate: ICreateProduct,
-  slug: string | string[],
 ): Promise<IProduct | null> => {
-  const response = await fetch(`/api/admin/edit/${slug}`, {
-    method: "POST",
+  const response = await fetch(`/api/admin/product/${id}`, {
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
@@ -87,11 +87,10 @@ const editProduct = async (
 
 const fetchProduct = async (slug: string): Promise<IProduct | null> => {
   const response = await fetch(`/api/admin/product/${slug}`, {
-    method: "POST",
+    method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ slug }),
   });
 
   if (response.ok) {
@@ -104,10 +103,10 @@ const fetchProduct = async (slug: string): Promise<IProduct | null> => {
 };
 
 const EditProductPage = () => {
-  const router = useRouter();
   const { slug } = useParams();
 
   const [image, setImage] = useState<string | null>(null);
+  const [productId, setProductId] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
   const { register, handleSubmit, setValue } = useForm<AddProductFormValues>({
@@ -124,19 +123,21 @@ const EditProductPage = () => {
   });
 
   const onSubmit = async (data: AddProductFormValues) => {
-    try {
-      setLoading(true);
-      const product = await editProduct(data, slug);
-      if (!product) {
-        throw new Error("Failed to edit product");
+    if(productId) {
+      try {
+        setLoading(true);
+        const product = await editProduct(productId,data);
+        if (!product) {
+          throw new Error("Failed to edit product");
+        }
+  
+        toast.success("Промени продукта успешно.");
+      } catch (error) {
+        toast.error("Възникна грешка при промяната на продукт!");
+        console.log("error", error);
+      } finally {
+        setLoading(false);
       }
-
-      toast.success("Промени продукта успешно.");
-    } catch (error) {
-      toast.error("Възникна грешка при промяната на продукт!");
-      console.log("error", error);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -151,6 +152,8 @@ const EditProductPage = () => {
         setValue("strength", fetchedProduct.strength);
         setValue("imageUrl", fetchedProduct.imageUrl);
         setValue("unitsInPackage", fetchedProduct.unitsInPackage);
+
+        setProductId(fetchedProduct._id);
         setImage(fetchedProduct.imageUrl);
       }
     };

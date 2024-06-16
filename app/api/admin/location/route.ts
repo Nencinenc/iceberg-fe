@@ -2,7 +2,7 @@ import connectToDatabase from "@/lib/mongoDb";
 import Location from "@/models/Location";
 import { NextResponse } from "next/server";
 
-export async function GET(req: Request) {
+export async function GET() {
   try {
     await connectToDatabase();
 
@@ -40,5 +40,41 @@ export async function POST(req: Request) {
   } catch (error) {
     console.log("[LOCATION_POST]", error);
     return new NextResponse("Internal error", { status: 500 });
+  }
+}
+
+export async function DELETE(req: Request) {
+  await connectToDatabase();
+
+  const { locId } = await req.json();
+  console.log(locId);
+
+  if (!locId) {
+    return NextResponse.json(
+      { message: "Missing required fields" },
+      { status: 400 },
+    );
+  }
+
+  try {
+    const locationByLocId = await Location.findOneAndDelete({ _id: locId });
+
+    if (!locationByLocId) {
+      return NextResponse.json(
+        { message: "Location not found" },
+        { status: 404 },
+      );
+    }
+
+    return NextResponse.json(
+      { message: "Location deleted successfully" },
+      { status: 200 },
+    );
+  } catch (error) {
+    console.error("Error deleting location:", error);
+    return NextResponse.json(
+      { message: "Internal Server Error" },
+      { status: 500 },
+    );
   }
 }

@@ -11,6 +11,7 @@ export interface ICreateProduct {
 }
 
 export interface IProduct extends Document {
+  _id: string;
   title: string;
   slug: string;
   description: string;
@@ -22,6 +23,7 @@ export interface IProduct extends Document {
 }
 
 const productSchema: Schema = new Schema({
+  _id: {type: String, require: true},
   title: { type: String, required: true },
   slug: { type: String, required: true, unique: true },
   description: { type: String, required: true },

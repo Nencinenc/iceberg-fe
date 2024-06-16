@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IProduct } from "@/models/Product";
 
 const getProducts = async () => {
-  return fetch('http://localhost:3000/api/admin/product', {
+  return fetch('/api/admin/product', {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -23,6 +23,20 @@ const getProducts = async () => {
   });
 };
 
+const deleteProduct = async (slug: string) => {
+  const response = await fetch("/api/admin/product", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ slug }),
+  });
+
+  if (response.ok) {
+    toast.success("Продуктът е успешно изтрит");
+  } 
+}
+
 const AllProducts: React.FC = () => {
   const [products, setProducts] = useState<IProduct[] | null>(null);
 
@@ -31,20 +45,6 @@ const AllProducts: React.FC = () => {
       setProducts(products);
     });
   }, []);
-
-  const deleteProduct = async (slug: string) => {
-    const response = await fetch("/api/admin/product", {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ slug }),
-    });
-
-    if (response.ok) {
-      toast.success("Продуктът е успешно изтрит");
-    } 
-  }
 
   return (
     <div className="mx-auto mt-24 md:mt-48 max-w-screen-lg px-2 text-white">
@@ -95,7 +95,7 @@ const AllProducts: React.FC = () => {
                 </td>
 
                 <td className="py-4 text-sm flex flex-row justify-between font-normal text-gray-500 sm:px-6">
-                  <a href={`/admin/edit/${product.slug}`}>
+                  <a href={`/admin/products/edit/${product.slug}`}>
                     <FontAwesomeIcon icon={faEdit} />
                   </a>
                   <button onClick={() => (deleteProduct(product.slug))}>

@@ -9,7 +9,7 @@ export async function GET() {
     const products = await Product.find();
     return NextResponse.json(products, { status: 200 });
   }
-  catch(e) {
+  catch (e) {
     console.log("[PRODUCTS_GET]", e);
     return new NextResponse("Internal error", { status: 500 });
   }
@@ -72,7 +72,6 @@ export async function DELETE(req: Request) {
   await connectToDatabase();
 
   const { slug } = await req.json();
-  console.log(slug)
 
   if (!slug) {
     return NextResponse.json(
