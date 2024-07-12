@@ -1,4 +1,6 @@
+
 import mongoose, { Schema, Document, Model } from "mongoose";
+import { v4 as uuidv4 } from "uuid"; // Import UUID
 
 export interface LocationToCreate {
   name: string;
@@ -14,7 +16,7 @@ export interface ILocation extends Document {
 }
 
 const locationSchema: Schema = new Schema({
-  _id: { type: String, AUTO_INCREMENT: true },
+  _id: { type: String, default: uuidv4 }, // Use UUID as the default value for _id
   name: { type: String, required: true },
   longitude: { type: Number, required: true },
   latitude: { type: Number, required: true },

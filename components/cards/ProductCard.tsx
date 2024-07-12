@@ -1,40 +1,35 @@
 import React from "react";
 import Image from "next/image";
-import { StaticImageData } from "next/image";
+import { IProduct } from "@/models/Product";
 
 interface ProductCardProps {
-  title: string;
-  mainImage: string | StaticImageData;
-  slug: string;
+  product: IProduct
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({
-  title,
-  mainImage,
-  slug,
+  product
 }) => {
   return (
-    <div className="group my-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg shadow-md">
       <a
-        className="relative mx-3 mt-3 flex w-full h-[400px] overflow-hidden rounded-xl"
-        href={`/products/${slug}`}
+        className="group flex w-full max-w-xs flex-col overflow-hidden rounded-lg shadow-md border border-sky-500 p-4"
+        href={`/products/${product.slug}`}
       >
         <Image
-          className="peer absolute top-10 right-0 h-80 mx-auto w-full object-cover"
-          src={typeof mainImage === "string" ? mainImage : mainImage.src}
-          alt={title}
+          className="h-50 w-50 mx-auto object-cover"
+          src={product.imageUrl}
+          alt={product.title}
           width={300}
           height={300}
         />
-      </a>
-      <div className="mt-4 px-5 pb-5 text-center">
-        <a href="#">
+      <div className="px-4 text-center">
           <h5 className="text-xl tracking-tight text-white font-bold">
-            {title}
+            {product.title}
           </h5>
-        </a>
+          <p className="text-gray-300">
+            {product.description}
+          </p>
       </div>
-    </div>
+    </a>
   );
 };
 

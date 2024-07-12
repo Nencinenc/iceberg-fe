@@ -20,50 +20,6 @@ const ProductPage = async ({ params }: { params: any }) => {
     <div className="p-12 bg-transparent min-h-screen flex flex-col items-center justify-center">
       <section className="py-12 sm:py-16">
         <div className="container mx-auto px-4">
-          <nav className="flex">
-            <ol role="list" className="flex items-center">
-              <li className="text-left">
-                <div className="-m-1">
-                  <a
-                    href="/"
-                    className="rounded-md p-1 text-sm font-medium text-gray-400 focus:text-gray-900 focus:shadow hover:text-gray-800"
-                  >
-                    Начало
-                  </a>
-                </div>
-              </li>
-
-              <li className="text-left">
-                <div className="flex items-center">
-                  <span className="mx-2 text-gray-400">/</span>
-                  <div className="-m-1">
-                    <a
-                      href="/products"
-                      className="rounded-md p-1 text-sm font-medium text-gray-400 focus:text-gray-900 focus:shadow hover:text-gray-800"
-                    >
-                      Продукти
-                    </a>
-                  </div>
-                </div>
-              </li>
-
-              <li className="text-left">
-                <div className="flex items-center">
-                  <span className="mx-2 text-gray-400">/</span>
-                  <div className="-m-1">
-                    <a
-                      href={`/products/${product.slug}`}
-                      className="rounded-md p-1 text-sm font-bold text-gray-500 focus:text-gray-900 focus:shadow hover:text-gray-800"
-                      aria-current="page"
-                    >
-                      {product.title}
-                    </a>
-                  </div>
-                </div>
-              </li>
-            </ol>
-          </nav>
-
           <div className="lg:col-gap-12 xl:col-gap-16 mt-8 grid grid-cols-1 gap-12 lg:mt-12 lg:grid-cols-5 lg:gap-16">
             <div className="lg:col-span-3 lg:row-end-1">
               <div className="lg:flex lg:items-start">
@@ -76,23 +32,6 @@ const ProductPage = async ({ params }: { params: any }) => {
                       width={400}
                       height={100}
                     />
-                  </div>
-                </div>
-
-                <div className="mt-2 w-full lg:order-1 lg:w-32 lg:flex-shrink-0">
-                  <div className="flex flex-row items-start lg:flex-col">
-                    <button
-                      type="button"
-                      className="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-sky-500 text-center"
-                    >
-                      <Image
-                        className="h-full w-full object-cover"
-                        src={product.imageUrl}
-                        width={100}
-                        height={100}
-                        alt=""
-                      />
-                    </button>
                   </div>
                 </div>
               </div>
@@ -174,7 +113,7 @@ const ProductPage = async ({ params }: { params: any }) => {
                 <div className="flex items-end">
                   <div className="text-center">
                     <div className="text-lg pb-2">Сила</div>
-                    <div className="bg-blue-500 flex flex-col p-2 rounded-full text-white">
+                    <div className="bg-sky-500 flex flex-col p-2 rounded-full text-white">
                       <div className="text-lg">{product.strength}</div>
                     </div>
                   </div>
@@ -182,7 +121,7 @@ const ProductPage = async ({ params }: { params: any }) => {
                 <div className="flex items-end">
                   <div className="text-center">
                     <div className="text-lg pb-2">Брой в пакет</div>
-                    <div className="bg-blue-500 flex flex-col p-2 rounded-full text-white">
+                    <div className="bg-sky-500 flex flex-col p-2 rounded-full text-white">
                       <div className="text-lg">{product.unitsInPackage}</div>
                     </div>
                   </div>
@@ -191,7 +130,7 @@ const ProductPage = async ({ params }: { params: any }) => {
                 <div className="flex items-end">
                   <div className="text-center">
                     <div className="text-lg pb-2">Тегло</div>
-                    <div className="bg-blue-500 flex flex-col p-2 rounded-full text-white">
+                    <div className="bg-sky-500 flex flex-col p-2 rounded-full text-white">
                       <div className="text-lg">{product.weight} гр.</div>
                     </div>
                   </div>
@@ -200,25 +139,16 @@ const ProductPage = async ({ params }: { params: any }) => {
               <div>Изберете здравословната алтернатива на тютюнопушенето!</div>
             </div>
 
-            <div className="lg:col-span-3">
-              <div className="">
-                <nav className="flex gap-4">
-                  <a
-                    href="#"
-                    title=""
-                    className="py-4 text-sm font-medium text-gray-100 hover:border-gray-400 hover:text-gray-800"
-                  >
-                    Описание
-                  </a>
-                </nav>
-              </div>
-
-              <div className="mt-8 flow-root sm:mt-3">
+           <div className="flex flex-col">
+             <p className="pb-4 text-sm font-medium text-gray-100 hover:border-gray-400 hover:text-gray-800">
+                Описание
+              </p>
+              <div className="flow-root">
                 {product.description}
               </div>
+           </div>
             </div>
           </div>
-        </div>
       </section>
     </div>
   );

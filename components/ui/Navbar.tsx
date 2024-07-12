@@ -26,7 +26,7 @@ const Navbar: React.FC = () => {
 
   return (
     <header
-      className={`fixed w-full top-0 left-0 z-50 transition-all duration-300 ${
+      className={`fixed w-full top-0 left-0 z-50 transition-all duration-300 border-b border-sky-500 ${
         scrolled ? "bg-black" : "bg-transparent"
       } p-4`}
     >
@@ -44,7 +44,7 @@ const Navbar: React.FC = () => {
           </li>
           <li>
             <Link href="/products" className="hover:text-gray-400">
-              Продукти
+              Никотинови паучове
             </Link>
           </li>
           <li>
@@ -92,7 +92,7 @@ const Navbar: React.FC = () => {
                 onClick={toggleMenu}
                 className="hover:text-gray-400"
               >
-                Продукти
+                Никотинови паучове
               </Link>
             </li>
             <li>

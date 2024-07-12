@@ -11,7 +11,7 @@ const VideoCTA: React.FC = () => {
         loop
         muted
       />
-      <div className="absolute inset-0 bg-black opacity-10"></div>
+      <div className="absolute inset-0 bg-black opacity-10" />
     </section>
   );
 };

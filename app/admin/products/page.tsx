@@ -77,7 +77,7 @@ const AllProducts: React.FC = () => {
 
           <tbody className="lg:border-gray-300">
             {products?.map((product) => (
-              <tr key={product.slug} className="">
+              <tr key={product.slug}>
                 <td
                   width="50%"
                   className="whitespace-no-wrap py-4 text-sm font-bold sm:px-6 text-left"

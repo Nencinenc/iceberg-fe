@@ -5,10 +5,6 @@ const Contacts: React.FC = (props) => {
     <div className="mx-auto max-w-screen-xl min-h-screen pt-36 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-2xl text-center">
         <h2 className="text-5xl font-bold">Контакти</h2>
-        <p className="mt-4 text-base text-gray-400">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus
-          faucibus massa dignissim tempus.
-        </p>
       </div>
       <div className="mx-auto mt-10 flex w-full max-w-screen-lg flex-col overflow-hidden rounded-xl md:flex-row">
         <form className="mx-auto w-full max-w-xl border-gray-200 px-10 py-8 md:px-8">
