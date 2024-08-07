@@ -36,7 +36,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           <ToasterProvider />
           {!isAdminLoginRoute && (isAdminRoute ? <AdminNavbar /> : <Navbar />)}
           <main
-            className={"flex-grow w-full mx-auto"}
+            className={"flex-grow bg-black w-full mx-auto"}
           >
             {!ageConfirmed ? <AgeConfirmationModal onConfirm={handleAgeConfirmation} /> : children}
           </main>
