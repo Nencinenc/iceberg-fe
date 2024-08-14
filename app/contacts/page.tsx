@@ -1,8 +1,8 @@
 import React from "react";
 
-const Contacts: React.FC = (props) => {
+const Contacts: React.FC = () => {
   return (
-    <div className="mx-auto max-w-screen-xl min-h-screen pt-36 px-4 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-screen-xl min-h-screen py-36 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-2xl text-center">
         <h2 className="text-5xl font-bold">Контакти</h2>
       </div>

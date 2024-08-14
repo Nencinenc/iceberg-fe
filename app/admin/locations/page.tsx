@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useEffect, useState } from "react";
 import { faX } from "@fortawesome/free-solid-svg-icons";
@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 import { ILocation } from "@/models/Location";
 
 const getLocations = async () => {
-  return fetch('/api/admin/location', {
+  return fetch("/api/admin/location", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -33,8 +33,8 @@ const deleteLocation = async (locId: string) => {
 
   if (response.ok) {
     toast.success("Локацията е успешно изтрит");
-  } 
-}
+  }
+};
 
 const AllLocations: React.FC = () => {
   const [locations, setLocations] = useState<ILocation[] | null>(null);
@@ -56,27 +56,24 @@ const AllLocations: React.FC = () => {
         <table className="min-w-full border-separate border-spacing-y-2 border-spacing-x-2">
           <thead className="hidden border-b lg:table-header-group">
             <tr className="">
-              <td
-                width="50%"
-                className="whitespace-normal py-4 text-sm font-medium  sm:px-6"
-              >
+              <td width="50%" className="whitespace-normal py-4 text-sm font-medium  sm:px-6">
                 Име
               </td>
             </tr>
           </thead>
 
           <tbody className="lg:border-gray-300">
-            {locations?.map((loc) => (
+            {locations?.map(loc => (
               <tr key={loc._id}>
-                <td
-                  width="50%"
-                  className="whitespace-no-wrap py-4 text-sm font-bold sm:px-6"
-                >
+                <td width="50%" className="whitespace-no-wrap py-4 text-sm font-bold sm:px-6">
                   {loc.name}
                 </td>
 
-                <td onClick={() => deleteLocation(loc._id)} className="py-4 text-sm flex flex-row justify-evenly text-red-400 font-normal sm:px-6 hover:cursor-pointer">
-                   <FontAwesomeIcon icon={faX} />
+                <td
+                  onClick={() => deleteLocation(loc._id)}
+                  className="py-4 text-sm flex flex-row justify-evenly text-red-400 font-normal sm:px-6 hover:cursor-pointer"
+                >
+                  <FontAwesomeIcon icon={faX} />
                 </td>
               </tr>
             ))}

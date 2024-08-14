@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IProduct } from "@/models/Product";
 
 const getProducts = async () => {
-  return fetch('/api/admin/product', {
+  return fetch("/api/admin/product", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -34,8 +34,8 @@ const deleteProduct = async (slug: string) => {
 
   if (response.ok) {
     toast.success("Продуктът е успешно изтрит");
-  } 
-}
+  }
+};
 
 const AllProducts: React.FC = () => {
   const [products, setProducts] = useState<IProduct[] | null>(null);
@@ -57,48 +57,32 @@ const AllProducts: React.FC = () => {
         <table className="min-w-full border-separate border-spacing-y-2 border-spacing-x-2">
           <thead className="hidden border-b lg:table-header-group">
             <tr className="">
-              <td
-                width="50%"
-                className="whitespace-normal py-4 text-sm font-medium sm:px-6 text-left"
-              >
+              <td width="50%" className="whitespace-normal py-4 text-sm font-medium sm:px-6 text-left">
                 Име
               </td>
-              <td className="whitespace-normal py-4 text-sm font-medium sm:px-6 text-left">
-                Вкус
-              </td>
-              <td className="whitespace-normal py-4 text-sm font-medium sm:px-6 text-left">
-                Бройки в кутия
-              </td>
-              <td className="whitespace-normal py-4 text-sm font-medium sm:px-6 text-left">
-                Описание
-              </td>
+              <td className="whitespace-normal py-4 text-sm font-medium sm:px-6 text-left">Вкус</td>
+              <td className="whitespace-normal py-4 text-sm font-medium sm:px-6 text-left">Бройки в кутия</td>
+              <td className="whitespace-normal py-4 text-sm font-medium sm:px-6 text-left">Описание</td>
             </tr>
           </thead>
 
           <tbody className="lg:border-gray-300">
-            {products?.map((product) => (
+            {products?.map(product => (
               <tr key={product.slug}>
-                <td
-                  width="50%"
-                  className="whitespace-no-wrap py-4 text-sm font-bold sm:px-6 text-left"
-                >
+                <td width="50%" className="whitespace-no-wrap py-4 text-sm font-bold sm:px-6 text-left">
                   {product.title}
                 </td>
                 <td className="whitespace-no-wrap hidden py-4 text-sm sm:px-6 lg:table-cell text-left">
                   {product.flavor}
                 </td>
-                <td className="whitespace-no-wrap py-4 px-6 text-sm text-left">
-                  {product.unitsInPackage}
-                </td>
-                <td className="whitespace-no-wrap py-4 px-6 text-sm text-left">
-                  {product.description}
-                </td>
+                <td className="whitespace-no-wrap py-4 px-6 text-sm text-left">{product.unitsInPackage}</td>
+                <td className="whitespace-no-wrap py-4 px-6 text-sm text-left">{product.description}</td>
 
                 <td className="py-4 text-sm flex flex-row justify-between font-normal text-gray-500 sm:px-6">
                   <a href={`/admin/products/edit/${product.slug}`}>
                     <FontAwesomeIcon icon={faEdit} />
                   </a>
-                  <button onClick={() => (deleteProduct(product.slug))}>
+                  <button onClick={() => deleteProduct(product.slug)}>
                     <FontAwesomeIcon icon={faX} />
                   </button>
                 </td>

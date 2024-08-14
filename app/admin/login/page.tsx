@@ -35,7 +35,7 @@ const LoginPage = () => {
           <input
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={e => setEmail(e.target.value)}
             className="w-full p-2 border border-gray-300 rounded text-black"
             required
           />
@@ -45,15 +45,12 @@ const LoginPage = () => {
           <input
             type="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={e => setPassword(e.target.value)}
             className="w-full p-2 border border-gray-300 rounded text-black"
             required
           />
         </div>
-        <button
-          type="submit"
-          className="w-full bg-blue-500 text-white py-2 rounded"
-        >
+        <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded">
           Login
         </button>
       </form>

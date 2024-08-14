@@ -18,12 +18,12 @@ const LatestProducts: React.FC = async () => {
         <h2 className="text-5xl font-bold mb-8">Най-новите продукти</h2>
       </div>
       <div className="flex flex-row gap-10 justify-center flex-wrap">
-        {products.reverse().splice(0,3).map((product) => (
-          <ProductCard
-            key={product.slug}
-            product={product}
-          />
-        ))}
+        {products
+          .reverse()
+          .splice(0, 3)
+          .map(product => (
+            <ProductCard key={product.slug} product={product} />
+          ))}
       </div>
     </div>
   );

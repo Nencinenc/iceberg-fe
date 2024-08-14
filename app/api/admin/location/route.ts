@@ -50,31 +50,19 @@ export async function DELETE(req: Request) {
   console.log(locId);
 
   if (!locId) {
-    return NextResponse.json(
-      { message: "Missing required fields" },
-      { status: 400 },
-    );
+    return NextResponse.json({ message: "Missing required fields" }, { status: 400 });
   }
 
   try {
     const locationByLocId = await Location.findOneAndDelete({ _id: locId });
 
     if (!locationByLocId) {
-      return NextResponse.json(
-        { message: "Location not found" },
-        { status: 404 },
-      );
+      return NextResponse.json({ message: "Location not found" }, { status: 404 });
     }
 
-    return NextResponse.json(
-      { message: "Location deleted successfully" },
-      { status: 200 },
-    );
+    return NextResponse.json({ message: "Location deleted successfully" }, { status: 200 });
   } catch (error) {
     console.error("Error deleting location:", error);
-    return NextResponse.json(
-      { message: "Internal Server Error" },
-      { status: 500 },
-    );
+    return NextResponse.json({ message: "Internal Server Error" }, { status: 500 });
   }
 }

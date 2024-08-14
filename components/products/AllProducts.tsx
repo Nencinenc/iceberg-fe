@@ -15,11 +15,8 @@ const AllProducts: React.FC = async () => {
   return (
     <div className="mx-auto max-w-screen-xl min-h-screen pt-36 px-4 sm:px-6 lg:px-8 ">
       <div className="flex flex-row gap-10 justify-center flex-wrap">
-        {products.map((product) => (
-          <ProductCard
-            key={product.slug}
-            product={product}
-          />
+        {products.map(product => (
+          <ProductCard key={product.slug} product={product} />
         ))}
       </div>
     </div>

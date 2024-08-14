@@ -32,7 +32,6 @@ const productSchema: Schema = new Schema({
   unitsInPackage: { type: Number, required: true },
 });
 
-const Product: Model<IProduct> =
-  mongoose.models.Product || mongoose.model<IProduct>("Product", productSchema);
+const Product: Model<IProduct> = mongoose.models.Product || mongoose.model<IProduct>("Product", productSchema);
 
 export default Product;

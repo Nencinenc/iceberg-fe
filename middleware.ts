@@ -3,10 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function middleware(req: NextRequest) {
   const url = req.nextUrl.clone();
 
-  if (
-    url.pathname.startsWith("/admin") &&
-    !url.pathname.startsWith("/admin/login")
-  ) {
+  if (url.pathname.startsWith("/admin") && !url.pathname.startsWith("/admin/login")) {
     const token = req.cookies.get("token")?.value;
     const verifyUrl = new URL("/api/admin/verify", req.url);
 

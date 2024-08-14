@@ -15,7 +15,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const isAdminRoute = pathName.startsWith("/admin");
   const isAdminLoginRoute = pathName === "/admin/login";
 
-    const [ageConfirmed, setAgeConfirmed] = useState(false);
+  const [ageConfirmed, setAgeConfirmed] = useState(false);
 
   useEffect(() => {
     const confirmed = localStorage.getItem("ageConfirmed") === "true";
@@ -35,9 +35,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         >
           <ToasterProvider />
           {!isAdminLoginRoute && (isAdminRoute ? <AdminNavbar /> : <Navbar />)}
-          <main
-            className={"flex-grow bg-black w-full mx-auto"}
-          >
+          <main className={"flex-grow bg-black w-full mx-auto"}>
             {!ageConfirmed ? <AgeConfirmationModal onConfirm={handleAgeConfirmation} /> : children}
           </main>
           {!isAdminLoginRoute && <Footer />}

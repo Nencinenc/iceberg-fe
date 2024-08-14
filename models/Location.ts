@@ -1,4 +1,3 @@
-
 import mongoose, { Schema, Document, Model } from "mongoose";
 import { v4 as uuidv4 } from "uuid"; // Import UUID
 
@@ -22,8 +21,6 @@ const locationSchema: Schema = new Schema({
   latitude: { type: Number, required: true },
 });
 
-const Location: Model<ILocation> =
-  mongoose.models.Location ||
-  mongoose.model<ILocation>("Location", locationSchema);
+const Location: Model<ILocation> = mongoose.models.Location || mongoose.model<ILocation>("Location", locationSchema);
 
 export default Location;

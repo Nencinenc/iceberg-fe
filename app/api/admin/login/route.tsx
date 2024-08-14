@@ -11,17 +11,10 @@ export async function POST(req: NextRequest) {
 
   const admin = await Admin.findOne({ email });
   if (!admin || !(await bcrypt.compare(password, admin.password))) {
-    return NextResponse.json(
-      { message: "Invalid credentials" },
-      { status: 401 }
-    );
+    return NextResponse.json({ message: "Invalid credentials" }, { status: 401 });
   }
 
-  const token = jwt.sign(
-    { email: admin.email },
-    process.env.NEXT_PUBLIC_JWT_SECRET as string,
-    { expiresIn: "24h" }
-  );
+  const token = jwt.sign({ email: admin.email }, process.env.NEXT_PUBLIC_JWT_SECRET as string, { expiresIn: "24h" });
 
   const response = NextResponse.json({ message: "Login successful" });
   response.cookies.set("token", token, {

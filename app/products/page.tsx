@@ -1,7 +1,7 @@
 import AllProducts from "@/components/products/AllProducts";
 import React from "react";
 
-const Products: React.FC = (props) => {
+const Products: React.FC = props => {
   return (
     <div>
       <AllProducts />

@@ -54,8 +54,7 @@ const Navbar: React.FC = () => {
           </li>
         </ul>
         <div className="hidden md:flex items-center space-x-2 text-md">
-          Влезнали сте като:{" "}
-          <span className="font-bold ml-1">администратор</span>
+          Влезнали сте като: <span className="font-bold ml-1">администратор</span>
         </div>
         <div className="md:hidden flex items-center">
           <button onClick={toggleMenu}>
@@ -70,38 +69,22 @@ const Navbar: React.FC = () => {
           </button>
           <ul className="flex flex-col space-y-6 text-white text-2xl">
             <li>
-              <Link
-                href="/"
-                onClick={toggleMenu}
-                className="hover:text-gray-400"
-              >
+              <Link href="/" onClick={toggleMenu} className="hover:text-gray-400">
                 Начало
               </Link>
             </li>
             <li>
-              <Link
-                href="/products"
-                onClick={toggleMenu}
-                className="hover:text-gray-400"
-              >
+              <Link href="/products" onClick={toggleMenu} className="hover:text-gray-400">
                 Продукти
               </Link>
             </li>
             <li>
-              <Link
-                href="/locations"
-                onClick={toggleMenu}
-                className="hover:text-gray-400"
-              >
+              <Link href="/locations" onClick={toggleMenu} className="hover:text-gray-400">
                 Локации
               </Link>
             </li>
             <li>
-              <Link
-                href="/contacts"
-                onClick={toggleMenu}
-                className="hover:text-gray-400"
-              >
+              <Link href="/contacts" onClick={toggleMenu} className="hover:text-gray-400">
                 Контакти
               </Link>
             </li>

@@ -23,13 +23,7 @@ type AddProductFormValues = z.infer<typeof formSchema>;
 
 const FORM_DATA: {
   label: string;
-  name:
-    | "title"
-    | "description"
-    | "weight"
-    | "flavor"
-    | "strength"
-    | "unitsInPackage";
+  name: "title" | "description" | "weight" | "flavor" | "strength" | "unitsInPackage";
   type: string;
 }[] = [
   {
@@ -64,10 +58,7 @@ const FORM_DATA: {
   },
 ];
 
-const editProduct = async (
-  slug: string,
-  productToCreate: ICreateProduct,
-): Promise<IProduct | null> => {
+const editProduct = async (slug: string, productToCreate: ICreateProduct): Promise<IProduct | null> => {
   const response = await fetch(`/api/admin/product/${slug}`, {
     method: "PUT",
     headers: {
@@ -122,20 +113,20 @@ const EditProductPage = ({ params }: { params: any }) => {
   });
 
   const onSubmit = async (data: AddProductFormValues) => {
-      try {
-        setLoading(true);
-        const product = await editProduct(slug,data);
-        if (!product) {
-          throw new Error("Failed to edit product");
-        }
-  
-        toast.success("Промени продукта успешно.");
-      } catch (error) {
-        toast.error("Възникна грешка при промяната на продукт!");
-        console.log("error", error);
-      } finally {
-        setLoading(false);
+    try {
+      setLoading(true);
+      const product = await editProduct(slug, data);
+      if (!product) {
+        throw new Error("Failed to edit product");
       }
+
+      toast.success("Промени продукта успешно.");
+    } catch (error) {
+      toast.error("Възникна грешка при промяната на продукт!");
+      console.log("error", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -160,10 +151,7 @@ const EditProductPage = ({ params }: { params: any }) => {
   return (
     <div className="py-24 px-16 md:px-32">
       <h2 className="text-2xl text-white font-bold mb-4">Промени продукт</h2>
-      <form
-        className="text-black rounded shadow-md space-y-4"
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <form className="text-black rounded shadow-md space-y-4" onSubmit={handleSubmit(onSubmit)}>
         <ImageUpload
           onChange={(value: string) => {
             setValue("imageUrl", value);
@@ -176,7 +164,7 @@ const EditProductPage = ({ params }: { params: any }) => {
           value={image}
         />
 
-        {FORM_DATA.map((item) => (
+        {FORM_DATA.map(item => (
           <div key={item.name}>
             <label className="text-white block mb-2">{item.label}</label>
             <input
@@ -190,11 +178,7 @@ const EditProductPage = ({ params }: { params: any }) => {
           </div>
         ))}
 
-        <button
-          type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded"
-          disabled={loading}
-        >
+        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded" disabled={loading}>
           Промени
         </button>
       </form>

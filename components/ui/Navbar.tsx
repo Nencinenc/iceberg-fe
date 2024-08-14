@@ -2,23 +2,13 @@
 
 import { faPhone, faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Logo from "@/assets/logo_volk.png";
 import Link from "next/link";
 
 const Navbar: React.FC = () => {
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 5);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -26,9 +16,7 @@ const Navbar: React.FC = () => {
 
   return (
     <header
-      className={`fixed w-full top-0 left-0 z-50 transition-all duration-300 text-white border-sky-500 ${
-        scrolled ? "bg-black text-white" : "bg-transparent"
-      } p-4`}
+      className={`fixed w-full top-0 left-0 z-50 transition-all duration-300 border-b border-sky-500 bg-black text-white p-4`}
     >
       <nav className="container mx-auto flex justify-between items-center py-2">
         <div className="text-lg font-bold">
@@ -59,10 +47,7 @@ const Navbar: React.FC = () => {
           </li>
         </ul>
         <div className="hidden md:flex items-center space-x-2 text-md">
-          <FontAwesomeIcon
-            icon={faPhone}
-            className="text-sky-400 w-4 h-4 m-0 p-0"
-          />
+          <FontAwesomeIcon icon={faPhone} className="text-sky-400 w-4 h-4 m-0 p-0" />
           <span>+1 (800) 123-4567</span>
         </div>
         <div className="md:hidden flex items-center">
@@ -78,38 +63,22 @@ const Navbar: React.FC = () => {
           </button>
           <ul className="flex flex-col space-y-6 text-white text-2xl">
             <li>
-              <Link
-                href="/"
-                onClick={toggleMenu}
-                className="hover:text-gray-400"
-              >
+              <Link href="/" onClick={toggleMenu} className="hover:text-gray-400">
                 Начало
               </Link>
             </li>
             <li>
-              <Link
-                href="/products"
-                onClick={toggleMenu}
-                className="hover:text-gray-400"
-              >
+              <Link href="/products" onClick={toggleMenu} className="hover:text-gray-400">
                 Никотинови паучове
               </Link>
             </li>
             <li>
-              <Link
-                href="/locations"
-                onClick={toggleMenu}
-                className="hover:text-gray-400"
-              >
+              <Link href="/locations" onClick={toggleMenu} className="hover:text-gray-400">
                 Локации
               </Link>
             </li>
             <li>
-              <Link
-                href="/contacts"
-                onClick={toggleMenu}
-                className="hover:text-gray-400"
-              >
+              <Link href="/contacts" onClick={toggleMenu} className="hover:text-gray-400">
                 Контакти
               </Link>
             </li>

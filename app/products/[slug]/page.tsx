@@ -38,9 +38,7 @@ const ProductPage = async ({ params }: { params: any }) => {
             </div>
 
             <div className="lg:col-span-2 lg:row-span-2 lg:row-end-2">
-              <h1 className="text-2xl font-bold text-white sm:text-3xl">
-                {product.title}
-              </h1>
+              <h1 className="text-2xl font-bold text-white sm:text-3xl">{product.title}</h1>
 
               <div className="mt-5 flex items-center">
                 <div className="flex items-center">
@@ -100,14 +98,10 @@ const ProductPage = async ({ params }: { params: any }) => {
                     ></path>
                   </svg>
                 </div>
-                <p className="ml-2 text-sm font-medium text-gray-500">
-                  10,209 Доволни клиента
-                </p>
+                <p className="ml-2 text-sm font-medium text-gray-500">10,209 Доволни клиента</p>
               </div>
 
-              <h2 className="mt-8 text-2xl font-bold text-gray-200">
-                С вкус на {product.flavor}
-              </h2>
+              <h2 className="mt-8 text-2xl font-bold text-gray-200">С вкус на {product.flavor}</h2>
 
               <div className="mt-5 mb-5 flex flex-col gap-5 items-center justify-between space-y-4 py-4 sm:flex-row sm:space-y-0">
                 <div className="flex items-end">
@@ -139,16 +133,14 @@ const ProductPage = async ({ params }: { params: any }) => {
               <div>Изберете здравословната алтернатива на тютюнопушенето!</div>
             </div>
 
-           <div className="flex flex-col">
-             <p className="pb-4 text-sm font-medium text-gray-100 hover:border-gray-400 hover:text-gray-800">
+            <div className="flex flex-col">
+              <p className="pb-4 text-sm font-medium text-gray-100 hover:border-gray-400 hover:text-gray-800">
                 Описание
               </p>
-              <div className="flow-root">
-                {product.description}
-              </div>
-           </div>
+              <div className="flow-root">{product.description}</div>
             </div>
           </div>
+        </div>
       </section>
     </div>
   );

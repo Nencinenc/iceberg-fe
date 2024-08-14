@@ -11,12 +11,7 @@ interface ImageUploadProps {
   value: string | null;
 }
 
-const ImageUpload: React.FC<ImageUploadProps> = ({
-  disabled,
-  onChange,
-  onRemove,
-  value,
-}) => {
+const ImageUpload: React.FC<ImageUploadProps> = ({ disabled, onChange, onRemove, value }) => {
   const onUpload = (result: any) => {
     onChange(result.info.secure_url);
   };
@@ -27,12 +22,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
     <div>
       {value && (
         <div className="w-40 h-40 relative rounded-md overflow-hidden mb-2">
-          <Image
-            fill
-            className="object-cover"
-            alt="Uploaded Image"
-            src={value}
-          />
+          <Image fill className="object-cover" alt="Uploaded Image" src={value} />
         </div>
       )}
       <CldUploadWidget onSuccess={onUpload} uploadPreset="lo7nozob">

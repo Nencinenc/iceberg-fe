@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 interface Props {
-    onConfirm: (value: boolean) => void;
+  onConfirm: (value: boolean) => void;
 }
 
 const AgeConfirmationModal: FC<Props> = ({ onConfirm }) => {
@@ -21,16 +21,10 @@ const AgeConfirmationModal: FC<Props> = ({ onConfirm }) => {
         <h2 className="text-2xl font-bold mb-4">Please confirm:</h2>
         <p className="text-lg mb-6">Are you over 18 years of age?</p>
         <div className="flex justify-center mb-4 space-x-4">
-          <button
-            onClick={handleYes}
-            className="bg-blue-500 border-2 px-4 py-2 rounded text-white hover:bg-green-500"
-          >
+          <button onClick={handleYes} className="bg-blue-500 border-2 px-4 py-2 rounded text-white hover:bg-green-500">
             YES
           </button>
-          <button
-            onClick={handleNo}
-            className="bg-blue-500 border-2 px-4 py-2 rounded text-white hover:bg-red-500"
-          >
+          <button onClick={handleNo} className="bg-blue-500 border-2 px-4 py-2 rounded text-white hover:bg-red-500">
             NO
           </button>
         </div>

@@ -1,11 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import {
-  Map,
-  AdvancedMarker,
-  InfoWindow,
-} from "@vis.gl/react-google-maps";
+import { Map, AdvancedMarker, InfoWindow } from "@vis.gl/react-google-maps";
 import { ILocation } from "@/models/Location";
 
 const getLocations = (): Promise<ILocation[] | null> => {
@@ -14,22 +10,19 @@ const getLocations = (): Promise<ILocation[] | null> => {
     headers: {
       "Content-Type": "application/json",
     },
-  })
-    .then(response => {
-      if (response.ok) {
-        return response.json();
-      } else {
-        console.error("Failed to get locations");
-        return null;
-      }
-    });
+  }).then(response => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      console.error("Failed to get locations");
+      return null;
+    }
+  });
 };
 
 const MapView = () => {
   const [locations, setLocations] = useState<ILocation[] | null>(null);
-  const [selectedLocation, setSelectedLocation] = useState<ILocation | null>(
-    null
-  );
+  const [selectedLocation, setSelectedLocation] = useState<ILocation | null>(null);
 
   useEffect(() => {
     getLocations().then(locations => {

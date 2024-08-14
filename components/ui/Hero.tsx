@@ -1,28 +1,17 @@
-"use client";
 import React from "react";
 
 const Hero: React.FC = () => {
   return (
-   <section className="relative flex items-center justify-start h-screen text-white">
-      <video
-        autoPlay
-        loop
-        muted
-        className="absolute inset-0 object-cover w-full h-full"
-      >
-        <source  src="/videos/landing.mp4" type="video/mp4" />
+    <div className="min-h-screen flex gap-10 items-center justify-center sm:flex-row flex-col sm:mt-0 mt-28 p-4">
+      <div className="mb-6 max-w-xl">
+        <h2 className="mb-6 font-extrabold text-5xl">Новото поколение никотин</h2>
+        <p className="text-lg">Насладете се на разнообразние от плодови вкусове. Без тютюн и неприятна миризма.</p>
+      </div>
+      <video autoPlay loop muted className="sm:w-1/2 w-full object-cover rounded-md">
+        <source src="/videos/landing.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      <div className="absolute inset-0 bg-black opacity-10"></div>
-      <div className="relative z-10 text-left max-w-2xl ml-36">
-        <h1 className="text-5xl md:text-7xl font-bold mb-4">
-          Новото поколение никотин
-        </h1>
-        <p className="text-lg md:text-xl">
-          Дългосрочно насищане на никотини без тютюн и неприятна миризма.
-        </p>
-      </div>
-    </section>
+    </div>
   );
 };
 

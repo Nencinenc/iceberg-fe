@@ -13,9 +13,7 @@ import {
 import { ILocation, LocationToCreate } from "@/models/Location";
 import toast from "react-hot-toast";
 
-const addAddress = async (
-  addressToCreate: LocationToCreate
-): Promise<ILocation | null> => {
+const addAddress = async (addressToCreate: LocationToCreate): Promise<ILocation | null> => {
   const response = await fetch("/api/admin/location", {
     method: "POST",
     headers: {
@@ -34,8 +32,7 @@ const addAddress = async (
 };
 
 const AddressSearch: React.FC = () => {
-  const [selectedPlace, setSelectedPlace] =
-    useState<google.maps.places.PlaceResult | null>(null);
+  const [selectedPlace, setSelectedPlace] = useState<google.maps.places.PlaceResult | null>(null);
   const [markerRef, marker] = useAdvancedMarkerRef();
 
   const handleAdd = async () => {
@@ -79,11 +76,7 @@ const AddressSearch: React.FC = () => {
         </div>
       </MapControl>
       <MapHandler place={selectedPlace} marker={marker} />
-      <button
-        disabled={!selectedPlace}
-        className="p-2 rounded-md bg-blue-400"
-        onClick={handleAdd}
-      >
+      <button disabled={!selectedPlace} className="p-2 rounded-md bg-blue-400" onClick={handleAdd}>
         <span className="text-white">Добави адрес</span>
       </button>
     </>
@@ -115,8 +108,7 @@ interface PlaceAutocompleteProps {
 }
 
 const PlaceAutocomplete = ({ onPlaceSelect }: PlaceAutocompleteProps) => {
-  const [placeAutocomplete, setPlaceAutocomplete] =
-    useState<google.maps.places.Autocomplete | null>(null);
+  const [placeAutocomplete, setPlaceAutocomplete] = useState<google.maps.places.Autocomplete | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const places = useMapsLibrary("places");
 
