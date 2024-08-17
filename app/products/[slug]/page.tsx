@@ -38,7 +38,7 @@ const ProductPage = async ({ params }: { params: any }) => {
             </div>
 
             <div className="lg:col-span-2 lg:row-span-2 lg:row-end-2">
-              <h1 className="text-2xl font-bold text-white sm:text-3xl">{product.title}</h1>
+              <h1 className="text-2xl font-bold  sm:text-3xl">{product.title}</h1>
 
               <div className="mt-5 flex items-center">
                 <div className="flex items-center">
@@ -107,7 +107,7 @@ const ProductPage = async ({ params }: { params: any }) => {
                 <div className="flex items-end">
                   <div className="text-center">
                     <div className="text-lg pb-2">Сила</div>
-                    <div className="bg-sky-500 flex flex-col p-2 rounded-full text-white">
+                    <div className="bg-sky-500 flex flex-col p-2 rounded-full ">
                       <div className="text-lg">{product.strength}</div>
                     </div>
                   </div>
@@ -115,7 +115,7 @@ const ProductPage = async ({ params }: { params: any }) => {
                 <div className="flex items-end">
                   <div className="text-center">
                     <div className="text-lg pb-2">Брой в пакет</div>
-                    <div className="bg-sky-500 flex flex-col p-2 rounded-full text-white">
+                    <div className="bg-sky-500 flex flex-col p-2 rounded-full ">
                       <div className="text-lg">{product.unitsInPackage}</div>
                     </div>
                   </div>
@@ -124,7 +124,7 @@ const ProductPage = async ({ params }: { params: any }) => {
                 <div className="flex items-end">
                   <div className="text-center">
                     <div className="text-lg pb-2">Тегло</div>
-                    <div className="bg-sky-500 flex flex-col p-2 rounded-full text-white">
+                    <div className="bg-sky-500 flex flex-col p-2 rounded-full ">
                       <div className="text-lg">{product.weight} гр.</div>
                     </div>
                   </div>

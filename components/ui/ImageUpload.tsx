@@ -34,7 +34,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ disabled, onChange, onRemove,
           if (value !== null) {
             return (
               <button
-                className="flex items-center justify-cente text-white bg-red-600 rounded-md p-2"
+                className="flex items-center justify-cente  bg-red-600 rounded-md p-2"
                 onClick={handleRemoveImage}
               >
                 <span>Премахни снимка</span>
@@ -46,7 +46,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ disabled, onChange, onRemove,
             <button
               disabled={disabled}
               onClick={onClick}
-              className="flex items-center justify-cente text-white bg-blue-400 rounded-md p-2"
+              className="flex items-center justify-cente  bg-blue-400 rounded-md p-2"
             >
               <span>Добави снимка</span>
             </button>

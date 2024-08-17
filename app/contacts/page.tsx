@@ -33,10 +33,7 @@ const Contacts: React.FC = () => {
           </div>
           <div className="flex items-center">
             <div className="flex-1"></div>
-            <button
-              className="rounded-xl bg-blue-600 px-4 py-3 text-center font-bold text-white hover:bg-blue-700"
-              type="submit"
-            >
+            <button className="rounded-xl bg-blue-600 px-4 py-3 text-center font-bold  hover:bg-blue-700" type="submit">
               Send message
             </button>
           </div>

@@ -15,7 +15,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const isAdminRoute = pathName.startsWith("/admin");
   const isAdminLoginRoute = pathName === "/admin/login";
 
-  const [ageConfirmed, setAgeConfirmed] = useState(false);
+  const [ageConfirmed, setAgeConfirmed] = useState<boolean>();
 
   useEffect(() => {
     const confirmed = localStorage.getItem("ageConfirmed") === "true";
@@ -28,7 +28,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
   return (
     <html lang="en">
-      <body className="flex flex-col min-h-screen">
+      <body className="flex flex-col min-h-screen text-white">
         <APIProvider
           apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ?? ""}
           onLoad={() => console.log("Maps API has loaded.")}
@@ -36,7 +36,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           <ToasterProvider />
           {!isAdminLoginRoute && (isAdminRoute ? <AdminNavbar /> : <Navbar />)}
           <main className={"flex-grow bg-black w-full mx-auto"}>
-            {!ageConfirmed ? <AgeConfirmationModal onConfirm={handleAgeConfirmation} /> : children}
+            {ageConfirmed === false ? <AgeConfirmationModal onConfirm={handleAgeConfirmation} /> : children}
           </main>
           {!isAdminLoginRoute && <Footer />}
         </APIProvider>

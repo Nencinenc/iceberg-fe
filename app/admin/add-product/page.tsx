@@ -114,7 +114,7 @@ const AddProductPage = () => {
 
   return (
     <div className="py-24 px-16 md:px-32">
-      <h2 className="text-2xl text-white font-bold mb-4">Добави продукт</h2>
+      <h2 className="text-2xl  font-bold mb-4">Добави продукт</h2>
       <form className="text-black rounded shadow-md space-y-4" onSubmit={handleSubmit(onSubmit)}>
         <ImageUpload
           onChange={(value: string) => {
@@ -130,7 +130,7 @@ const AddProductPage = () => {
 
         {FORM_DATA.map(item => (
           <div key={item.name}>
-            <label className="text-white block mb-2">{item.label}</label>
+            <label className=" block mb-2">{item.label}</label>
             <input
               {...register(item.name, {
                 valueAsNumber: item.type === "number" ? true : false,
@@ -142,7 +142,7 @@ const AddProductPage = () => {
           </div>
         ))}
 
-        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded" disabled={loading}>
+        <button type="submit" className="bg-blue-500  px-4 py-2 rounded" disabled={loading}>
           Запази
         </button>
       </form>

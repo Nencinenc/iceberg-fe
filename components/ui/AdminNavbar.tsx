@@ -58,16 +58,16 @@ const Navbar: React.FC = () => {
         </div>
         <div className="md:hidden flex items-center">
           <button onClick={toggleMenu}>
-            <FontAwesomeIcon icon={faBars} className="text-white text-4xl" />
+            <FontAwesomeIcon icon={faBars} className=" text-4xl" />
           </button>
         </div>
       </nav>
       {menuOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-95 text-center z-50 flex flex-col items-center justify-center">
           <button onClick={toggleMenu} className="absolute top-4 right-4">
-            <FontAwesomeIcon icon={faTimes} className="text-white w-8 h-8" />
+            <FontAwesomeIcon icon={faTimes} className=" w-8 h-8" />
           </button>
-          <ul className="flex flex-col space-y-6 text-white text-2xl">
+          <ul className="flex flex-col space-y-6  text-2xl">
             <li>
               <Link href="/" onClick={toggleMenu} className="hover:text-gray-400">
                 Начало

@@ -20,7 +20,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         height={300}
       />
       <div className="px-4 text-center">
-        <h5 className="text-xl tracking-tight text-white font-bold">{product.title}</h5>
+        <h5 className="text-xl tracking-tight  font-bold">{product.title}</h5>
         <p className="text-gray-300">{product.description}</p>
       </div>
     </a>

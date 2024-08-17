@@ -77,7 +77,7 @@ const AddressSearch: React.FC = () => {
       </MapControl>
       <MapHandler place={selectedPlace} marker={marker} />
       <button disabled={!selectedPlace} className="p-2 rounded-md bg-blue-400" onClick={handleAdd}>
-        <span className="text-white">Добави адрес</span>
+        <span className="">Добави адрес</span>
       </button>
     </>
   );

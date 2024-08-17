@@ -6,9 +6,8 @@ const About: React.FC = () => {
   return (
     <div className="min-h-screen flex gap-10 flex-wrap items-center justify-center p-4">
       <div className="mb-6 max-w-xl">
-        <h2 className="mb-6 max-w-lg text-3xl font-extrabold text-white sm:text-5xl sm:leading-snug">
-          Открийте новото усещане с
-          <span className="inline-block bg-sky-400 ml-2 px-2 font-bold text-white">ICEBERG</span>!
+        <h2 className="mb-6 max-w-lg text-3xl font-extrabold  sm:text-5xl sm:leading-snug">
+          Открийте новото усещане с<span className="inline-block bg-sky-400 ml-2 px-2 font-bold ">ICEBERG</span>!
         </h2>
         <p className="text-lg">
           Ние от ICEBERG предлагаме най-високо качество никотинови паучове. Прилагаме най-съвременните производствени

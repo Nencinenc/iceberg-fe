@@ -47,7 +47,7 @@ const AllProducts: React.FC = () => {
   }, []);
 
   return (
-    <div className="mx-auto mt-24 md:mt-48 max-w-screen-lg px-2 text-white">
+    <div className="mx-auto mt-24 md:mt-48 max-w-screen-lg px-2 ">
       <div className="sm:flex sm:items-center sm:justify-between flex-col sm:flex-row">
         <p className="flex-1 text-base font-bold">Всички продукти</p>
         <a href="/admin/add-product">Добави нов продукт</a>

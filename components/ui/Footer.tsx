@@ -13,16 +13,16 @@ const Footer: React.FC = () => {
         aria-label="Footer Navigation"
         className="mx-auto mb-10 flex justify-center flex-col gap-10 text-center sm:flex-row sm:text-left"
       >
-        <a href="/" className="font-medium text-white">
+        <a href="/" className="font-medium ">
           Начало
         </a>
-        <a href="/products" className="font-medium text-white">
+        <a href="/products" className="font-medium ">
           Продукти
         </a>
-        <a href="/locations" className="font-medium text-white">
+        <a href="/locations" className="font-medium ">
           Локации
         </a>
-        <a href="/contacts" className="font-medium text-white">
+        <a href="/contacts" className="font-medium ">
           Контакти
         </a>
       </nav>
