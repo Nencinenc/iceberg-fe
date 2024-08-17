@@ -1,5 +1,3 @@
-import React from "react";
-
 import AddressSearch from "@/components/locations/AddressSearch";
 
 const AddLocationPage = () => {
