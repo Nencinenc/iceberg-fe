@@ -15,12 +15,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const isAdminRoute = pathName.startsWith("/admin");
   const isAdminLoginRoute = pathName === "/admin/login";
 
-  const [ageConfirmed, setAgeConfirmed] = useState(false);
-
-  useEffect(() => {
-    const confirmed = localStorage.getItem("ageConfirmed") === "true";
-    setAgeConfirmed(confirmed);
-  }, []);
+  const [ageConfirmed, setAgeConfirmed] = useState(localStorage.getItem("ageConfirmed") === "true");
 
   const handleAgeConfirmation = (confirmed: boolean) => {
     setAgeConfirmed(confirmed);
