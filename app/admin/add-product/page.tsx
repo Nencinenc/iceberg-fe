@@ -17,6 +17,7 @@ const formSchema = z.object({
   flavor: z.string(),
   strength: z.string(),
   unitsInPackage: z.number().min(1),
+  featured: z.boolean().optional(),
 });
 
 type AddProductFormValues = z.infer<typeof formSchema>;
@@ -92,18 +93,25 @@ const AddProductPage = () => {
       flavor: "",
       strength: "",
       unitsInPackage: 0,
+      featured: false, // Set default value for 'featured'
     },
   });
 
   const onSubmit = async (data: AddProductFormValues) => {
+    const productData: ICreateProduct = {
+      ...data,
+      featured: data.featured ?? false, // Ensure featured is set
+    };
+
     try {
       setLoading(true);
-      const product = await createProduct(data);
+      const product = await createProduct(productData);
       if (!product) {
         throw new Error("Failed to create product");
       }
 
       toast.success("Продуктът е добавен успешно!");
+      router.push("/products"); // Redirect to products page after successful creation
     } catch (error) {
       toast.error("Възникна грешка при добавянето на продукт!");
       console.log("error", error);
@@ -113,9 +121,9 @@ const AddProductPage = () => {
   };
 
   return (
-    <div className="py-24 px-16 md:px-32">
-      <h2 className="text-2xl  font-bold mb-4">Добави продукт</h2>
-      <form className="text-black rounded shadow-md space-y-4" onSubmit={handleSubmit(onSubmit)}>
+    <div className="py-24  px-16 md:px-32">
+      <h2 className="text-2xl font-bold mb-4">Добави продукт</h2>
+      <form className="text-white rounded shadow-md space-y-4" onSubmit={handleSubmit(onSubmit)}>
         <ImageUpload
           onChange={(value: string) => {
             setValue("imageUrl", value);
@@ -128,6 +136,11 @@ const AddProductPage = () => {
           value={image}
         />
 
+        <div>
+          <label className="block mb-2">Показване като представен продукт</label>
+          <input type="checkbox" {...register("featured")} className="w-5 h-5" disabled={loading} />
+        </div>
+
         {FORM_DATA.map(item => (
           <div key={item.name}>
             <label className=" block mb-2">{item.label}</label>
@@ -135,14 +148,14 @@ const AddProductPage = () => {
               {...register(item.name, {
                 valueAsNumber: item.type === "number" ? true : false,
               })}
-              className="w-full p-2 border border-gray-300 rounded"
+              className="w-full text-black p-2 border border-gray-300 rounded"
               disabled={loading}
               type={item.type}
             />
           </div>
         ))}
 
-        <button type="submit" className="bg-blue-500  px-4 py-2 rounded" disabled={loading}>
+        <button type="submit" className="bg-blue-500 px-4 py-2 rounded" disabled={loading}>
           Запази
         </button>
       </form>
