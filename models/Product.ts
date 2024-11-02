@@ -8,6 +8,7 @@ export interface ICreateProduct {
   flavor: string;
   strength: string;
   unitsInPackage: number;
+  featured: boolean;
 }
 
 export interface IProduct extends Document {
@@ -19,18 +20,23 @@ export interface IProduct extends Document {
   flavor: string;
   strength: string;
   unitsInPackage: number;
+  featured: boolean;
 }
 
-const productSchema: Schema = new Schema({
-  title: { type: String, required: true },
-  slug: { type: String, required: true, unique: true },
-  description: { type: String, required: true },
-  imageUrl: { type: String, required: true },
-  weight: { type: Number, required: true },
-  flavor: { type: String, required: true },
-  strength: { type: String, required: true },
-  unitsInPackage: { type: Number, required: true },
-});
+const productSchema: Schema = new Schema(
+  {
+    title: { type: String, required: true },
+    slug: { type: String, required: true, unique: true },
+    description: { type: String, required: true },
+    imageUrl: { type: String, required: true },
+    weight: { type: Number, required: true },
+    flavor: { type: String, required: true },
+    strength: { type: String, required: true },
+    unitsInPackage: { type: Number, required: true },
+    featured: { type: Boolean, default: false },
+  },
+  { strict: true }
+);
 
 const Product: Model<IProduct> = mongoose.models.Product || mongoose.model<IProduct>("Product", productSchema);
 

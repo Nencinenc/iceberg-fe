@@ -19,9 +19,18 @@ export async function PUT(req: Request, { params }: { params: { slug: string } }
     await connectToDatabase();
     const body = await req.json();
 
-    const { title, description, imageUrl, weight, flavor, strength, unitsInPackage } = body;
+    const { title, description, imageUrl, weight, flavor, strength, unitsInPackage, featured } = body;
 
-    if (!title || !description || !imageUrl || !weight || !flavor || !strength || !unitsInPackage) {
+    if (
+      !title ||
+      !description ||
+      !imageUrl ||
+      !weight ||
+      !flavor ||
+      !strength ||
+      !unitsInPackage ||
+      featured === undefined
+    ) {
       return new NextResponse("Missing data", { status: 400 });
     }
 
@@ -40,6 +49,7 @@ export async function PUT(req: Request, { params }: { params: { slug: string } }
       flavor,
       strength,
       unitsInPackage,
+      featured,
     };
 
     const product = await Product.findOneAndUpdate(

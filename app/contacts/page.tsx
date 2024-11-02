@@ -1,65 +1,117 @@
+"use client";
+
 import React from "react";
+import { motion } from "framer-motion";
+import { Mail, Phone, Clock, Building } from "lucide-react";
 
 const Contacts: React.FC = () => {
   return (
-    <div className="mx-auto max-w-screen-xl min-h-screen py-36 px-4 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-2xl text-center">
-        <h2 className="text-5xl font-bold">Контакти</h2>
-      </div>
-      <div className="mx-auto mt-10 flex w-full max-w-screen-lg flex-col overflow-hidden rounded-xl md:flex-row">
-        <form className="mx-auto w-full max-w-xl border-gray-200 px-10 py-8 md:px-8">
-          <div className="mb-4">
-            <label className="text mb-2 block font-medium">Your e-mail:</label>
-            <input
-              className="w-full rounded border border-gray-300 px-3 py-2 outline-none ring-blue-500 focus:ring"
-              id="email"
-              type="email"
-            />
-          </div>
-          <div className="mb-4">
-            <label className="text mb-2 block font-medium">Subject:</label>
-            <input
-              className="w-full rounded border border-gray-300 px-3 py-2 outline-none ring-blue-500 focus:ring"
-              id="subject"
-              type="subject"
-            />
-          </div>
-          <div className="mb-4">
-            <label className="text mb-2 block font-medium">Message:</label>
-            <textarea
-              className="h-52 w-full rounded border border-gray-300 px-3 py-2 outline-none ring-blue-500 focus:ring"
-              id="message"
-            ></textarea>
-          </div>
-          <div className="flex items-center">
-            <div className="flex-1"></div>
-            <button className="rounded-xl bg-blue-600 px-4 py-3 text-center font-bold  hover:bg-blue-700" type="submit">
-              Send message
-            </button>
-          </div>
-        </form>
-        <div className="mt-10 bg-blue-600 px-10 py-8 text-gray-100 md:mt-0 md:ml-auto">
-          <div className="">
-            <p className="mb-4 font-medium border-b  pb-2">OFFICE HOURS</p>
-            <p className="mb-4">Monday – Thursday: 08:00 – 16:00</p>
-            <p className="mb-4">Friday: 08:00 - 15:00</p>
-            <p className="mb-4">Weekend: Closed</p>
-            <p className="mb-4">
-              Email:
-              <a href="#" className="font-semibold underline">
-                support@apps.io
-              </a>
-            </p>
-            <p className="mb-4">
-              Phone:
-              <a href="#" className="font-semibold underline">
-                +46 (0) 10-32 32 322
-              </a>
-            </p>
-            <hr className="my-2 h-0 border-t border-r-0 border-b-0 border-l-0 border-gray-300" />
-            <p className="mb-4">Org.no: 63452-2832</p>
-            <p className="mb-4">VAT no: 32353</p>
-          </div>
+    <div className="min-h-screen text-white py-40 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-12"
+        >
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            Свържете се с{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">нас</span>
+          </h1>
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            Имате въпроси? Не се колебайте да се свържете с нашия екип за поддръжка
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
+            <form className="bg-gray-800 rounded-3xl p-8 shadow-2xl">
+              <div className="mb-6">
+                <label htmlFor="email" className="block text-gray-400 mb-2">
+                  Вашият имейл
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  className="w-full bg-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-sky-500"
+                  placeholder="example@email.com"
+                />
+              </div>
+              <div className="mb-6">
+                <label htmlFor="subject" className="block text-gray-400 mb-2">
+                  Тема
+                </label>
+                <input
+                  type="text"
+                  id="subject"
+                  className="w-full bg-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-sky-500"
+                  placeholder="Въведете тема"
+                />
+              </div>
+              <div className="mb-6">
+                <label htmlFor="message" className="block text-gray-400 mb-2">
+                  Съобщение
+                </label>
+                <textarea
+                  id="message"
+                  rows={6}
+                  className="w-full bg-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-sky-500"
+                  placeholder="Въведете вашето съобщение"
+                ></textarea>
+              </div>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-full bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold py-3 px-8 rounded-full"
+              >
+                Изпрати съобщение
+              </motion.button>
+            </form>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="bg-gray-800 rounded-3xl p-8 shadow-2xl"
+          >
+            <h2 className="text-2xl font-bold mb-6">Информация за контакт</h2>
+            <div className="space-y-6">
+              <div className="flex items-center">
+                <Clock className="w-6 h-6 text-sky-500 mr-4" />
+                <div>
+                  <p className="font-semibold">Работно време</p>
+                  <p className="text-gray-400">Понеделник – Петък: 09:00 – 18:00</p>
+                  <p className="text-gray-400">Събота – Неделя: Затворено</p>
+                </div>
+              </div>
+              <div className="flex items-center">
+                <Mail className="w-6 h-6 text-sky-500 mr-4" />
+                <div>
+                  <p className="font-semibold">Имейл</p>
+                  <a href="mailto:support@iceberg.com" className="text-sky-400 hover:underline">
+                    support@iceberg.com
+                  </a>
+                </div>
+              </div>
+              <div className="flex items-center">
+                <Phone className="w-6 h-6 text-sky-500 mr-4" />
+                <div>
+                  <p className="font-semibold">Телефон</p>
+                  <a href="tel:+359888123456" className="text-sky-400 hover:underline">
+                    +359 888 123 456
+                  </a>
+                </div>
+              </div>
+              <div className="flex items-center">
+                <Building className="w-6 h-6 text-sky-500 mr-4" />
+                <div>
+                  <p className="font-semibold">Адрес</p>
+                  <p className="text-gray-400">ул. "Примерна" 123, София 1000, България</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </div>

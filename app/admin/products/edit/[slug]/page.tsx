@@ -17,6 +17,7 @@ const formSchema = z.object({
   flavor: z.string(),
   strength: z.string(),
   unitsInPackage: z.number().min(1),
+  featured: z.boolean().optional(),
 });
 
 type AddProductFormValues = z.infer<typeof formSchema>;
@@ -109,13 +110,19 @@ const EditProductPage = ({ params }: { params: any }) => {
       flavor: "",
       strength: "",
       unitsInPackage: 0,
+      featured: false,
     },
   });
 
   const onSubmit = async (data: AddProductFormValues) => {
+    const productData: ICreateProduct = {
+      ...data,
+      featured: data.featured ?? false,
+    };
+
     try {
       setLoading(true);
-      const product = await editProduct(slug, data);
+      const product = await editProduct(slug, productData);
       if (!product) {
         throw new Error("Failed to edit product");
       }
@@ -140,6 +147,7 @@ const EditProductPage = ({ params }: { params: any }) => {
         setValue("strength", fetchedProduct.strength);
         setValue("imageUrl", fetchedProduct.imageUrl);
         setValue("unitsInPackage", fetchedProduct.unitsInPackage);
+        setValue("featured", fetchedProduct.featured);
 
         setImage(fetchedProduct.imageUrl);
       }
@@ -150,8 +158,8 @@ const EditProductPage = ({ params }: { params: any }) => {
 
   return (
     <div className="py-24 px-16 md:px-32">
-      <h2 className="text-2xl  font-bold mb-4">Промени продукт</h2>
-      <form className="text-black rounded shadow-md space-y-4" onSubmit={handleSubmit(onSubmit)}>
+      <h2 className="text-2xl font-bold mb-4">Промени продукт</h2>
+      <form className="text-white rounded shadow-md space-y-4" onSubmit={handleSubmit(onSubmit)}>
         <ImageUpload
           onChange={(value: string) => {
             setValue("imageUrl", value);
@@ -164,6 +172,11 @@ const EditProductPage = ({ params }: { params: any }) => {
           value={image}
         />
 
+        <div>
+          <label className="block mb-2">Показване като представен продукт</label>
+          <input type="checkbox" {...register("featured")} className="w-5 h-5" disabled={loading} />
+        </div>
+
         {FORM_DATA.map(item => (
           <div key={item.name}>
             <label className=" block mb-2">{item.label}</label>
@@ -171,7 +184,7 @@ const EditProductPage = ({ params }: { params: any }) => {
               {...register(item.name, {
                 valueAsNumber: item.type === "number",
               })}
-              className="w-full p-2 border border-gray-300 rounded"
+              className="w-full text-black p-2 border border-gray-300 rounded"
               disabled={loading}
               type={item.type}
             />

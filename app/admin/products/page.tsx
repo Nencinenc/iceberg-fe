@@ -78,7 +78,7 @@ const AllProducts: React.FC = () => {
                 <td className="whitespace-no-wrap py-4 px-6 text-sm text-left">{product.unitsInPackage}</td>
                 <td className="whitespace-no-wrap py-4 px-6 text-sm text-left">{product.description}</td>
 
-                <td className="py-4 text-sm flex flex-row justify-between font-normal text-gray-500 sm:px-6">
+                <td className="py-4 text-sm gap-3 flex flex-row justify-between font-normal text-gray-500 sm:px-6">
                   <a href={`/admin/products/edit/${product.slug}`}>
                     <FontAwesomeIcon icon={faEdit} />
                   </a>

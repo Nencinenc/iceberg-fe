@@ -1,17 +1,16 @@
+import React from "react";
 import Hero from "@/components/ui/Hero";
 import About from "@/components/home/About";
-import LatestProducts from "@/components/home/LatestProducts";
 import VideoCTA from "@/components/home/VideoCTA";
+import FeaturedProducts from "@/components/home/FeaturedProducts";
 
 export default function Home() {
   return (
-    <>
-      <div>
-        <Hero />
-        <LatestProducts />
-        <VideoCTA />
-        <About />
-      </div>
-    </>
+    <div className="bg-black">
+      <Hero />
+      <FeaturedProducts />
+      <VideoCTA />
+      <About />
+    </div>
   );
 }
