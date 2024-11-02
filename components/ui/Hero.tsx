@@ -30,7 +30,7 @@ const Hero: React.FC = () => {
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
-              href="/about"
+              href="/contacts"
               className="inline-flex items-center px-6 py-3 rounded-full border border-gray-700 text-white font-semibold hover:bg-white/5 transition-all duration-300"
             >
               Научи повече
