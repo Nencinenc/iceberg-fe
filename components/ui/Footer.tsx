@@ -1,7 +1,7 @@
-import React from "react"
-import Image from "next/image"
-import Link from "next/link"
-import Logo from "@/assets/logo_volk.png"
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import Logo from "@/assets/logo_volk.png";
 
 const Footer: React.FC = () => {
   const navItems = [
@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
     { href: "/products", label: "Продукти" },
     { href: "/locations", label: "Локации" },
     { href: "/contacts", label: "Контакти" },
-  ]
+  ];
 
   return (
     <footer className="relative bg-gradient-to-b from-black to-gray-900 pt-20 pb-10 px-6">
@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
         aria-label="Footer Navigation"
         className="max-w-4xl mx-auto mb-10 flex flex-wrap justify-center gap-8 text-center"
       >
-        {navItems.map((item) => (
+        {navItems.map(item => (
           <Link
             key={item.href}
             href={item.href}
@@ -46,7 +46,7 @@ const Footer: React.FC = () => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

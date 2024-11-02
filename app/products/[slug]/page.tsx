@@ -63,7 +63,10 @@ const ProductPage = async ({ params }: { params: any }) => {
 
             <p className="text-lg text-gray-300 mb-8">{product.description}</p>
 
-            <a href={"/locations"} className="w-full bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold py-4 px-8 rounded-full flex items-center justify-center">
+            <a
+              href={"/locations"}
+              className="w-full bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold py-4 px-8 rounded-full flex items-center justify-center"
+            >
               <ShoppingCart className="mr-2" />
               Къде се продава?
             </a>

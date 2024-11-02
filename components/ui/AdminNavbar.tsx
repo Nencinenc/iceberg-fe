@@ -48,8 +48,7 @@ const AdminNavbar: React.FC = () => {
             </li>
           ))}
         </ul>
-        <div className="hidden md:flex items-center space-x-2 text-white">
-        </div>
+        <div className="hidden md:flex items-center space-x-2 text-white"></div>
         <button onClick={toggleMenu} className="md:hidden text-white">
           <Menu className="w-6 h-6" />
         </button>

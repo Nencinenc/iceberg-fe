@@ -5,9 +5,9 @@ module.exports = {
     extend: {
       colors: {
         primaryBlue: "#003054",
-        startBlue: '#0f0c29',
-        midBlue: '#302b63',
-        endBlue: '#24243e',
+        startBlue: "#0f0c29",
+        midBlue: "#302b63",
+        endBlue: "#24243e",
       },
     },
   },

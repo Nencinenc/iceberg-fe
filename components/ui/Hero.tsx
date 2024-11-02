@@ -1,9 +1,9 @@
-'use client'
+"use client";
 
-import React from "react"
-import { motion } from "framer-motion"
-import Link from "next/link"
-import { ArrowRight } from "lucide-react"
+import React from "react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 const Hero: React.FC = () => {
   return (
@@ -45,13 +45,7 @@ const Hero: React.FC = () => {
         >
           <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl">
             <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent z-10" />
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover"
-            >
+            <video autoPlay loop muted playsInline className="w-full h-full object-cover">
               <source src="/videos/arasaka.MP4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
@@ -61,7 +55,7 @@ const Hero: React.FC = () => {
       </div>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-sky-900/40 via-black to-black -z-20" />
     </section>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;
