@@ -19,6 +19,15 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Disable scroll on body when menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [menuOpen]);
+
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
@@ -64,7 +73,7 @@ const Navbar: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 bg-black/95 backdrop-blur-md z-50 flex flex-col items-center justify-center"
+            className="fixed inset-0 bg-black/95 backdrop-blur-md z-50 flex flex-col items-center justify-center h-screen w-screen"
           >
             <button onClick={toggleMenu} className="absolute top-4 right-4 text-white">
               <X className="w-8 h-8" />
