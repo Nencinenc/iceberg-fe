@@ -107,7 +107,7 @@ const Contacts: React.FC = () => {
                 <Building className="w-6 h-6 text-sky-500 mr-4" />
                 <div>
                   <p className="font-semibold">Адрес</p>
-                  <p className="text-gray-400">ул. "Примерна" 123, София 1000, България</p>
+                  <p className="text-gray-400">ул. Примерна 123, София 1000, България</p>
                 </div>
               </div>
             </div>
